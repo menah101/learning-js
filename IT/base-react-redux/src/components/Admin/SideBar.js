@@ -1,20 +1,13 @@
 import "react-pro-sidebar/dist/css/styles.css";
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
-
 import { FaTachometerAlt, FaGithub, FaRegLaughWink } from "react-icons/fa";
-// import sidebarBg from "../../assets/bg2.jpg";
+import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
   const { collapsed, toggled, handleToggleSidebar } = props;
   return (
     <>
-      <ProSidebar
-        // image={sidebarBg}
-        collapsed={collapsed}
-        toggled={toggled}
-        breakPoint="md"
-        onToggle={handleToggleSidebar}
-      >
+      <ProSidebar collapsed={collapsed} toggled={toggled} breakPoint="md" onToggle={handleToggleSidebar}>
         <SidebarHeader>
           <div
             style={{
@@ -28,7 +21,7 @@ const SideBar = (props) => {
               whiteSpace: "nowrap",
             }}
           >
-           Quiz Question
+            Quiz Question
           </div>
         </SidebarHeader>
 
@@ -36,18 +29,20 @@ const SideBar = (props) => {
           <Menu iconShape="circle">
             <MenuItem
               icon={<FaTachometerAlt />}
-              // suffix={<span className="badge red">New</span>}
-              >
-              dashboard
+            >
+              Dashboard
+              <Link to="/admins" />
             </MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu 
-              // suffix={<span className="badge yellow">3</span>}
+            <SubMenu
               icon={<FaRegLaughWink />}
               title="Features"
             >
-              <MenuItem>Quản lý Users</MenuItem>
+              <MenuItem>
+                Quản lý Users
+                <Link to="/admins/manage-users" />
+              </MenuItem>
               <MenuItem>Quản lý Bài Quiz</MenuItem>
               <MenuItem>Quản lý Câu Hỏi</MenuItem>
             </SubMenu>
